@@ -1,0 +1,5 @@
+/dist/
+/node_modules/
+/tmp/
+/FrontEnd/.DS_Store
+/doc/etc

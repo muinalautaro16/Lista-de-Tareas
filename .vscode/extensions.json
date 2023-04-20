@@ -1,0 +1,31 @@
+{
+    "recommendations": [
+        "svelte.svelte-vscode",
+        "ardenivanov.svelte-intellisense",
+        "fivethree.vscode-svelte-snippets",
+        "pivaszbs.svelte-autoimport",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "eamodio.gitlens",
+        "tobiasalthoff.atom-material-theme",
+        "yurihs.sublime-vscode-theme",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+        "dineug.vuerd-vscode",
+        "usernamehw.errorlens",
+        "pomdtr.excalidraw-editor",
+        "golang.go",
+        "pkief.material-icon-theme",
+        "stringham.move-ts",
+        "oracle.mysql-shell-for-vs-code",
+        "nespinozacr.mysql-autocomplete",
+        "jakebathman.mysql-syntax",
+        "christian-kohler.path-intellisense",
+        "ms-playwright.playwright",
+        "humao.rest-client",
+        "rbbit.typescript-hero",
+        "tomoki1207.pdf",
+        "MS-CEINTL.vscode-language-pack-es"
+    ]
+}

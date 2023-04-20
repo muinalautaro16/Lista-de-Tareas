@@ -1,0 +1,11 @@
+{
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "ignorePatterns": [".astric"],
+    "plugins": ["prettier", "svelte3"],
+    "extends": ["prettier"],
+    "rules": {
+        "prettier/prettier": "error"
+    }
+}
