@@ -94,7 +94,7 @@ func (r *Res) send() {
 	} else {
 		colorRed := "\033[31m"
 		colorReset := "\033[0m"
-		fmt.Print(string(colorRed), "ATENCION ERROR EN RESPONCE: ")
+		fmt.Print(string(colorRed), "ATENCION ERROR EN RESPONSE: ")
 		fmt.Println(string(colorReset), "Ningun parametro seteado con informacion a enviar")
 	}
 

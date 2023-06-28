@@ -22,7 +22,7 @@ MongoNewCN Funcion que retorna la coleccion lista para interactuar con la BD
 var MongoNewCN = database.MongoColection
 
 /*
-MySQLNewCN Debuelve la conexion a Mysql
+MySQLNewCN Devuelve la conexion a Mysql
 @database: Nombre de la bd con la que se creara la conexion
 */
 var MySQLNewCN = database.SetDbMysql

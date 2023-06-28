@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// GlobalRequest estructura compartida proveniente del middleware de aotorizacion.
+// GlobalRequest estructura compartida proveniente del middleware de autorizacion.
 type GlobalRequest struct {
 	Mysql         *sql.DB
 	Mongo         *mongo.Database

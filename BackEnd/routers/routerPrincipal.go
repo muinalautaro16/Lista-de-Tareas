@@ -2,18 +2,19 @@ package routers
 
 import (
 	"ASTRIC/BackEnd/ASTRIC/helper/routes"
-	rProyecto "ASTRIC/BackEnd/api/ProyectosCL/routes"
+	"ASTRIC/BackEnd/ASTRIC/middleware"
+	rProyecto "ASTRIC/BackEnd/api/proyectos/routes"
 
 	"github.com/gorilla/mux"
 )
 
 // RutasPrincipales Manejador de rutas principales, donde se declaran los prefijos
 func RutasPrincipales(rout *mux.Router) {
-	//Rutas de juzgados
-	routeProyecto := routes.NewPrefix(rout, "/proyecto", "Modulo de proyectos")
-	//ruotersPrueba.Use(database.ChequeBD)
-	// ruottotems.Use(middleware.ProcesarRutas)
 
-	routerProyecto := routes.NewRouter(routeProyecto)
+	rutaProyecto := routes.NewPrefix(rout, "/Proyectos", "Modelo de Proyectos")
+
+	rutaProyecto.Use(middleware.ProcesarRutas)
+	routerProyecto := routes.NewRouter(rutaProyecto)
 	rProyecto.RutasModul(routerProyecto)
+
 }

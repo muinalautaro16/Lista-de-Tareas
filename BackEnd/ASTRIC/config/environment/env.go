@@ -26,7 +26,7 @@ func LoadEnvDefault() {
 
 	//API
 	env.EnvAPI.Enable = config.LoadConfigENV().APIEnanle
-	env.EnvAPI.Port = env.Ifstring("API_PORT", "3000") //Puerot por defecto del API
+	env.EnvAPI.Port = env.Ifstring("API_PORT", "3000") //Puerto por defecto del API
 	env.EnvAPI.Timeout = env.Ifint("API_TIMEOUT", 3)   //Tiempo de inactividad del endpoint en segundos
 
 	//Websocket

@@ -1,0 +1,16 @@
+@HOST=http://localhost:3000/
+@TOKEN=dev
+@DATABASE=daira
+
+###CrearProyecto
+POST {{HOST}}Proyectos/CrearProyecto HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+{
+    "Nombre":"holaa1",
+    "Prioridad":"holaa1",
+    "Fecha_Inicio":"hola1",
+    "Fecha_Fin":"hola1"
+}

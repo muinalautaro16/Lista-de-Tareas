@@ -1,4 +1,4 @@
-package backend
+package BackEnd
 
 import (
 	"ASTRIC/BackEnd/ASTRIC/config/environment"
@@ -63,9 +63,9 @@ func StartAPI(modo string) {
 
 		messages := messages.GetMessagesIni()
 
-		messages["DEBELOPEN"] = "La api esta ejecutandose en modo DESARROLLO"
+		messages["DEVELOPEN"] = "La api esta ejecutandose en modo DESARROLLO"
 		if env.GetEnvGeneral().DisableToken {
-			messages["!IMPORTANTE¡"] = "Se ecuentra desactivada la validacion de TOKEN por lo tanto en Autorisations se debe enviar el nombre del usuarios en ves de TOKEN"
+			messages["!IMPORTANTE¡"] = "Se encuentra desactivada la validacion de TOKEN por lo tanto en Autorizations se debe enviar el nombre del usuarios en vez de TOKEN"
 		}
 		if env.GetEnvDoc().Enable {
 			messages["COMANDO SWAGGER"] = "swagger generate spec -o ./swagger.json --scan-models"
@@ -79,7 +79,7 @@ func StartAPI(modo string) {
 
 	err := <-status
 	if err != "" {
-		fmt.Println(string(colorRed), "Se produgeron errores al ejecutar algunos servidores:")
+		fmt.Println(string(colorRed), "Se produjeron errores al ejecutar algunos servidores:")
 		log.Fatal(err)
 	}
 

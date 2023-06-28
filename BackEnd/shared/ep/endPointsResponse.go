@@ -4,12 +4,12 @@ import (
 	"ASTRIC/BackEnd/ASTRIC/helper/res"
 )
 
-// NewResponse Crea un nuevo responce
+// NewResponse Crea un nuevo response
 /*
 Ej: res := NewResponse(tag string, w http.ResponseWriter)
 Parametros:
 	@Tag: Coresponde a la accion a realizar o solicitada por el request
-	@w: La variable del response donde se ralizara la respuesta
+	@w: La variable del response donde se realizara la respuesta
 */
 var NewResponse = res.NewResponse
 
@@ -17,7 +17,7 @@ var NewResponse = res.NewResponse
 Response funcion que genera la respuesta de la API
 
 	@tag: Es la tarea o funcion que se solicito ej: Nuevo Usuario
-	@datos: Son los datos que se utilizaron para realizar el tag solisitado
+	@datos: Son los datos que se utilizaron para realizar el tag solicitado
 	@w: Corresponde al ResponseWriter "w http.ResponseWriter"
 */
 var Response = res.Response
@@ -38,6 +38,6 @@ solo funcona con la variab de entrono NOTIFICCIONES en true
 	@tag: Es la tarea o funcion que se solicito ej: Nuevo Usuario
 	@datos: Son los datos que se utilizaron para realizar el tag solisitado
 	@w: Corresponde al ResponseWriter "w http.ResponseWriter"
-	@msg: Corresponde al mensaje el mismo aprecesra con 1 - !ATENCION¡ al comienzo
+	@msg: Corresponde al mensaje el mismo aparecera con 1 - !ATENCION¡ al comienzo
 */
 var ResponseMSG = res.ResponseMSG

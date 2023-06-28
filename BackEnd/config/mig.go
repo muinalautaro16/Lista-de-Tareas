@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// Migration funcion para realizar migrado de la BD nesecita configuracion
+// Migration funcion para realizar migrado de la BD necesita configuracion
 func Migration(con *gorm.DB) error {
 
 	//var actor my.[[MODELO]]

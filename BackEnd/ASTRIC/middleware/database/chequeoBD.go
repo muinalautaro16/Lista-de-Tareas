@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-// ChequeBD Middleware para chequear las conexiones de bd hates de realizar alguna transaccion
+// ChequeBD Middleware para chequear las conexiones de bd antes de realizar alguna transaccion
 func ChequeBD(next http.Handler) http.Handler {
 
 	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {

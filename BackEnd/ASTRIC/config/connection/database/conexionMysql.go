@@ -16,29 +16,29 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// SetDbMysql Debuelve la conexion a Mysql con la bd setada
+// SetDbMysql Devuelve la conexion a Mysql con la bd setada
 func SetDbMysql(database string) *sql.DB {
 	con := getCN(database)
 	return con
 }
 
-// GetMysqlCN Debuelve la conexion a Mysql
+// GetMysqlCN Devuelve la conexion a Mysql
 func GetMysqlCN() *sql.DB {
 	con := getCN(env.GetEnvMysql().Db)
 	return con
 }
 
-// SetMysqlCNORM Debuelve una conexion ORM a la bd solicitada
+// SetMysqlCNORM Devuelve una conexion ORM a la bd solicitada
 func SetMysqlCNORM(database string) (*gorm.DB, context.CancelFunc) {
-	return getCNORM(database)
+	return GetCNORM(database)
 }
 
-// GetMysqlCNORM Debuelve una conexion ORM
+// GetMysqlCNORM Devuelve una conexion ORM
 func GetMysqlCNORM() (*gorm.DB, context.CancelFunc) {
-	return getCNORM(env.GetEnvMysql().Db)
+	return GetCNORM(env.GetEnvMysql().Db)
 }
 
-func getCNORM(database string) (*gorm.DB, context.CancelFunc) {
+func GetCNORM(database string) (*gorm.DB, context.CancelFunc) {
 
 	env := env.GetEnvMysql()
 
@@ -87,8 +87,8 @@ func getCNORM(database string) (*gorm.DB, context.CancelFunc) {
 
 	*/
 
-	_, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(env.SetMaxTimeOutCon))
-	ctx, _ := context.WithTimeout(context.Background(), time.Second*time.Duration(env.SetMaxTimeOutCon))
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(env.SetMaxTimeOutCon))
+	//	ctx, _ := context.WithTimeout(context.Background(), time.Second*time.Duration(env.SetMaxTimeOutCon))
 
 	return con.WithContext(ctx), cancel
 }

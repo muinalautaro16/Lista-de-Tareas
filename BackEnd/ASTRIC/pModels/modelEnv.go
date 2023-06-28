@@ -1,6 +1,6 @@
 package pmodels
 
-// EnvDoc Variables de documentascion
+// EnvDoc Variables de documentacion
 type EnvDoc struct {
 	Enable  bool
 	URL     string

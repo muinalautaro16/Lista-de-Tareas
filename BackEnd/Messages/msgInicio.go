@@ -2,7 +2,7 @@ package messages
 
 /*
 
-	messages["Titulo del mensage"] = "Contenido del mensage"
+	messages["Titulo del mensaje"] = "Contenido del mensaje"
 
 */
 
@@ -10,7 +10,7 @@ package messages
 func GetMessagesIni() map[string]string {
 	messages := make(map[string]string)
 
-	//Declaracion de totos los mensajes que se quierena incorporar en la linea de comando al ejecutar la API
+	//Declaracion de todos los mensajes que se quieran incorporar en la linea de comando al ejecutar la API
 
 	return messages
 }

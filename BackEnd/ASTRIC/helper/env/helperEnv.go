@@ -35,12 +35,12 @@ func SetTokenStatus() {
 	EnvGeneral.DisableToken = true
 }
 
-// GetConfigAPI debuelve las variable de API
+// GetConfigAPI devuelve las variable de API
 func GetConfigAPI() ASTRICmodels.EnvAPI {
 	return EnvAPI
 }
 
-// GetConfigWS debuelve las variable de Websocket
+// GetConfigWS devuelve las variable de Websocket
 func GetConfigWS() ASTRICmodels.EnvWs {
 	return EnvWS
 }
@@ -55,7 +55,7 @@ func GetEnvDoc() ASTRICmodels.EnvDoc {
 	return EnvDoc
 }
 
-// GetEnvGeneral debulve las variables de entrono
+// GetEnvGeneral devuelve las variables de entorno
 func GetEnvGeneral() ASTRICmodels.EnvGeneral {
 	return EnvGeneral
 }
@@ -65,12 +65,12 @@ func GetEnvMongo() ASTRICmodels.EnvMongo {
 	return EnvMongo
 }
 
-// GetEnvMysql debulve las variables de entrono
+// GetEnvMysql devuelve las variables de entorno
 func GetEnvMysql() ASTRICmodels.EnvMysql {
 	return EnvMysql
 }
 
-// GetEnvMails debulve las variables de entrono
+// GetEnvMails devuelve las variables de entorno
 func GetEnvMails() ASTRICmodels.EnvMails {
 	return EnvMails
 }

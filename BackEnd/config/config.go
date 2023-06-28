@@ -3,6 +3,7 @@ package config
 import (
 	"ASTRIC/BackEnd/ASTRIC/helper/env"
 	"ASTRIC/BackEnd/shared/usuarios"
+	"fmt"
 	"net/http"
 	"time"
 )
@@ -15,14 +16,14 @@ func LoadConfigENV() *env.Default {
 
 	var Config env.Default
 
-	Config.APIEnanle = true         //Activa el servidor API
-	Config.WSEnable = false         //Activa el servidor WebSocket
-	Config.DOCEnable = false        //Activa el servidor de documentacion
-	Config.MYSQLHost = "25.0.0.10"  //Host de mysql
-	Config.MYSQLPass = "6686566865" //Password mysql
-	Config.MYSQLPort = 3302         //Puerto de mysql
-	Config.MYSQLUser = "root"       // Usuairo de mysql
-	Config.MONGOURL = ""            //Cadena de conexion de mysql
+	Config.APIEnanle = true        //Activa el servidor API
+	Config.WSEnable = false        //Activa el servidor WebSocket
+	Config.DOCEnable = false       //Activa el servidor de documentacion
+	Config.MYSQLHost = "127.0.0.1" //Host de mysql
+	Config.MYSQLPass = ""          //Password mysql
+	Config.MYSQLPort = 3306        //Puerto de mysql
+	Config.MYSQLUser = "root"      // Usuario de mysql
+	Config.MONGOURL = ""           //Cadena de conexion de mysql
 
 	return &Config
 
@@ -54,7 +55,7 @@ func LoadConfigUser() *Usuarios {
 }
 
 /*
-Usuarios Modelo genaral
+Usuarios Modelo general
 swagger:model Usuarios
 */
 type Usuarios struct {
@@ -75,14 +76,16 @@ func (Usuarios) TableName() string {
 	return "usuarios"
 }
 
-// RutaRaiz Debuelve la web de la ruta raiz
+// RutaRaiz Devuelve la web de la ruta raiz
 /*
 ------------------CONFIGURACION DE VISTA INICIAL DE API-----------------------
 */
 func RutaRaiz(w http.ResponseWriter, r *http.Request) {
 
-	plantilla := []byte("<h1>API-REST-Fulll ASTRIC</1>")
+	plantilla := []byte("<h1>API-REST-Full ASTRIC o no</h1>")
 
 	_, _ = w.Write(plantilla)
+
+	fmt.Fprintf(w, "<h1>Todo</h1>")
 
 }

@@ -9,43 +9,43 @@ import (
 	"gorm.io/gorm"
 )
 
-// Request Estructura global donde se cargan las BD recividad por los request
+// Request Estructura global donde se cargan las BD recibidas por los request
 var request ASTRICmodels.GlobalRequest
 
-// responceWS Estructura global de responce de request
+// responseWS Estructura global de response de request
 var responceWS ASTRICmodels.ResponseWS
 
-// SetBDResponceWS setea la bd en el responce del websocket
+// SetBDResponseWS setea la bd en el response del websocket
 func SetBDResponceWS(bd string) {
 	responceWS.BD = bd
 }
 
-// SetTagResponceWS seta el tag del responce websocket
+// SetTagResponseWS seta el tag del response websocket
 func SetTagResponceWS(tag string) {
 	responceWS.Tag = tag
 }
 
-// SetUsuarioResponceWS Setea el usuario del responce websocket
-func SetUsuarioResponceWS(usuraio string) {
-	responceWS.Usuario = usuraio
+// SetUsuarioResponseWS Setea el usuario del response websocket
+func SetUsuarioResponceWS(usuario string) {
+	responceWS.Usuario = usuario
 }
 
-// SetTablaResponceWS setea la tabla del responce websoket
+// SetTablaResponseWS setea la tabla del response websoket
 func SetTablaResponceWS(tabla string) {
 	responceWS.Tabla = tabla
 }
 
-// SetAppResponceWS setea la ruta del websoket
+// SetAppResponseWS setea la ruta del websoket
 func SetAppResponceWS(app string) {
 	responceWS.App = app
 }
 
-// SetEndPointResponceWS setea la ruta del websoket
+// SetEndPointResponseWS setea la ruta del websoket
 func SetEndPointResponceWS(EndPoint string) {
 	responceWS.EndPoint = EndPoint
 }
 
-// SetMysql Setea la conexion con la bd solitida
+// SetMysql Setea la conexion con la bd solicitada
 func SetMysql(mysql *sql.DB) {
 	request.Mysql = mysql
 }
@@ -66,7 +66,7 @@ func SetMysqlORM(mysqlOrm *gorm.DB, close context.CancelFunc) {
 	request.MysqlORMClose = close
 }
 
-// GetResponceWS Retrona el reaponceWS
+// GetResponseWS Retorna el responseWS
 func GetResponceWS() ASTRICmodels.ResponseWS {
 	return responceWS
 }
@@ -81,17 +81,17 @@ func GetRequestVar() ASTRICmodels.GlobalRequest {
 	return request
 }
 
-// GetMongoDB debuelve la conexion a la bd de mongo ya seteada
+// GetMongoDB devuelve la conexion a la bd de mongo ya seteada
 func GetMongoDB() *mongo.Database {
 	return request.Mongo
 }
 
-// GetMysql Debuleve la conexion a la bd de mysql ya seteada
+// GetMysql Devuelve la conexion a la bd de mysql ya seteada
 func GetMysql() *sql.DB {
 	return request.Mysql
 }
 
-// GetMysqlORM Debuelve la conexion a  mysql ORM ya setead
+// GetMysqlORM Devuelve la conexion a  mysql ORM ya setead
 func GetMysqlORM() (*gorm.DB, context.CancelFunc) {
 	return request.MysqlORM, request.MysqlORMClose
 }
