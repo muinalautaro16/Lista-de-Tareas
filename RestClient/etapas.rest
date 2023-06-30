@@ -1,0 +1,40 @@
+@HOST=http://localhost:3000/
+@TOKEN=dev
+@DATABASE=daira
+
+###CrearEtapa
+POST {{HOST}}Proyectos/CrearEtapa HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+{
+    "ID_proyecto":13,
+    "Nombre":"Etapa 1",
+    "Prioridad":"ALTA"
+}
+
+###EliminarEtapa
+DELETE  {{HOST}}Proyectos/EliminarEtapa/2 HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+###ObtenerEtapa
+GET {{HOST}}Proyectos/ObtenerEtapas HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+###ModificarEtapa
+PUT {{HOST}}Proyectos/ModificarEtapa HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+{
+    "id":3,
+    "id_proyecto":13,
+    "nombre":"Etapa 2",
+    "prioridad":"MEDIA"
+}

@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": 0,
-    "scrollLeft": 0,
+    "scrollTop": -12,
+    "scrollLeft": -1,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -164,14 +164,122 @@
         ],
         "ui": {
           "active": false,
-          "left": 200,
-          "top": 100,
-          "zIndex": 49,
+          "left": 20,
+          "top": 145,
+          "zIndex": 45,
           "widthName": 60,
           "widthComment": 60
         },
         "visible": true,
         "id": "5b3c2ba9-df7b-47ce-a9be-b1c8897a278f"
+      },
+      {
+        "name": "etapas",
+        "comment": "",
+        "columns": [
+          {
+            "name": "id",
+            "comment": "",
+            "dataType": "int",
+            "default": "AUTO_INCREMENT",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 122.38330078125
+            },
+            "id": "0369f005-018d-459f-96ad-f9237d8e74d9"
+          },
+          {
+            "name": "id_proyecto",
+            "comment": "",
+            "dataType": "int",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 69.208984375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "559202b9-6565-406a-9a56-0cf64f340b19"
+          },
+          {
+            "name": "nombre",
+            "comment": "",
+            "dataType": "text",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "1254b9e5-1568-4b29-8a9a-9462298d831d"
+          },
+          {
+            "name": "prioridad",
+            "comment": "",
+            "dataType": "text",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "79f833aa-9189-4530-8200-34409a01ccd2"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 627,
+          "top": 167,
+          "zIndex": 42,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "a0d7650d-e2e8-4721-a81c-685e8635cbde"
       }
     ],
     "indexes": []
@@ -180,6 +288,33 @@
     "memos": []
   },
   "relationship": {
-    "relationships": []
+    "relationships": [
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "5b3c2ba9-df7b-47ce-a9be-b1c8897a278f",
+          "columnIds": [
+            "e1e9f12d-9710-4101-9acd-01e1d2702c2b"
+          ],
+          "x": 440.03955078125,
+          "y": 230.75,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "a0d7650d-e2e8-4721-a81c-685e8635cbde",
+          "columnIds": [
+            "559202b9-6565-406a-9a56-0cf64f340b19"
+          ],
+          "x": 627,
+          "y": 242.5,
+          "direction": "left"
+        },
+        "constraintName": "fk_proyectos_to_etapas",
+        "visible": true,
+        "id": "1f7d8193-b53c-4a88-9bcd-a7064ae9b1e3"
+      }
+    ]
   }
 }
