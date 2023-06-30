@@ -1,16 +1,14 @@
 @use 'sass:color';
 
 // Svelte Colors!
-@use '@material/theme/index' as theme with (
-  $primary: #483cf5,
-  $secondary: #676778,
-  $surface: #fff,
-  $background: #fff,
-  $on-primary: #000000,
-  $on-surface: #000000,
+@use '@material/theme/index' as theme with ($primary: #1570ac,
+  $secondary: #f39200,
+  $surface: #1b1b1b,
+  $background: #1b1b1b,
+  $on-primary: #fff,
+  $on-surface: #fff,
   $on-secondary: #000000,
-  $error: #ff0000
-);
+  $error: #ff0000);
 
 html,
 body {
@@ -21,6 +19,7 @@ body {
 a {
   color: #40b3ff;
 }
+
 a:visited {
   color: color.scale(#40b3ff, $lightness: -35%);
 }

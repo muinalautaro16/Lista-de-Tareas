@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "cli": "node ./.astric/cli/app.js",
-        "theme": "smui-theme compile FrontEnd/review/theme_.css -i FrontEnd/theme/",
+        "theme": "smui-theme compile FrontEnd/theme/theme.css -i FrontEnd/theme/",
         "b": "air ",
         "mig": "go run main.go --modo=Migratio",
         "f": "vite --mode front --open --config .astric/vite.config.ts",
@@ -16,6 +16,7 @@
         "check": "svelte-check --tsconfig ./tsconfig.json"
     },
     "devDependencies": {
+        "@smui/textfield": "^7.0.0-beta.9",
         "@sveltejs/vite-plugin-svelte": "^2.0.2",
         "@tsconfig/svelte": "^3.0.0",
         "svelte": "^3.55.1",
@@ -29,6 +30,7 @@
         "axios": "^0.27.2",
         "chart.js": "^3.9.1",
         "crypto": "^1.0.1",
+        "date-picker-svelte": "^2.4.3",
         "eslint": "^8.23.1",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
@@ -38,6 +40,7 @@
         "moment": "^2.29.4",
         "prettier": "^2.7.1",
         "prettier-plugin-svelte": "^2.7.0",
+        "smui-theme": "^7.0.0-beta.9",
         "socket.io-client": "^1.4.5",
         "svelte-chartjs": "^3.0.1",
         "svelte-dts": "^0.3.7",
