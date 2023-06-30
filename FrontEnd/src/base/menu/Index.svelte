@@ -4,13 +4,9 @@
 
     let menu = [
         {
-            name: 'CHART',
-            route: '/prueba/chart',
-        },
-        {
-            name: 'FORMS',
-            route: '/prueba/forms',
-        },
+            name: 'Proyecto',
+            route: '/Tareas/default',
+        }
     ];
 
     let databses = [
