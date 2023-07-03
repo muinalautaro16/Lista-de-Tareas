@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -12,
-    "scrollLeft": -1,
+    "scrollTop": -80,
+    "scrollLeft": -57,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -164,9 +164,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 20,
-          "top": 145,
-          "zIndex": 45,
+          "left": 11,
+          "top": 120,
+          "zIndex": 33,
           "widthName": 60,
           "widthComment": 60
         },
@@ -274,12 +274,143 @@
           "active": false,
           "left": 627,
           "top": 167,
-          "zIndex": 42,
+          "zIndex": 23,
           "widthName": 60,
           "widthComment": 60
         },
         "visible": true,
         "id": "a0d7650d-e2e8-4721-a81c-685e8635cbde"
+      },
+      {
+        "name": "tareas",
+        "comment": "",
+        "columns": [
+          {
+            "name": "id",
+            "comment": "",
+            "dataType": "int",
+            "default": "AUTO_INCREMENT",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 122.38330078125
+            },
+            "id": "41174cd5-1b55-421f-beb3-f463876b4841"
+          },
+          {
+            "name": "id_etapa",
+            "comment": "",
+            "dataType": "int",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "08b1c245-c52c-4b6c-8016-768856ed48a6"
+          },
+          {
+            "name": "nombre",
+            "comment": "",
+            "dataType": "var",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "fd8e8104-e4e2-43d5-8329-fda3a7a7eb3f"
+          },
+          {
+            "name": "descripcion",
+            "comment": "",
+            "dataType": "text",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 67.75537109375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "50acb491-0bbc-4e90-ab2d-f5e94e727d71"
+          },
+          {
+            "name": "plazo",
+            "comment": "",
+            "dataType": "int",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "ebeea706-4a9d-4469-a53f-edfa155b0879"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 367,
+          "top": 467,
+          "zIndex": 35,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "945c4f6a-6d76-4b32-beb1-9fd7440d7d79"
       }
     ],
     "indexes": []
@@ -298,8 +429,8 @@
           "columnIds": [
             "e1e9f12d-9710-4101-9acd-01e1d2702c2b"
           ],
-          "x": 440.03955078125,
-          "y": 230.75,
+          "x": 431.03955078125,
+          "y": 205.75,
           "direction": "right"
         },
         "end": {
@@ -308,12 +439,38 @@
             "559202b9-6565-406a-9a56-0cf64f340b19"
           ],
           "x": 627,
-          "y": 242.5,
+          "y": 204.75,
           "direction": "left"
         },
         "constraintName": "fk_proyectos_to_etapas",
         "visible": true,
         "id": "1f7d8193-b53c-4a88-9bcd-a7064ae9b1e3"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "a0d7650d-e2e8-4721-a81c-685e8635cbde",
+          "columnIds": [
+            "0369f005-018d-459f-96ad-f9237d8e74d9"
+          ],
+          "x": 627,
+          "y": 280.25,
+          "direction": "left"
+        },
+        "end": {
+          "tableId": "945c4f6a-6d76-4b32-beb1-9fd7440d7d79",
+          "columnIds": [
+            "08b1c245-c52c-4b6c-8016-768856ed48a6"
+          ],
+          "x": 575.5693359375,
+          "y": 467,
+          "direction": "top"
+        },
+        "constraintName": "fk_etapas_to_tareas",
+        "visible": true,
+        "id": "2db6bf0e-bbdd-47f2-813d-4c5154d6826c"
       }
     ]
   }

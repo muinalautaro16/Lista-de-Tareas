@@ -1,0 +1,42 @@
+@HOST=http://localhost:3000/
+@TOKEN=dev
+@DATABASE=daira
+
+###CrearTarea
+POST {{HOST}}Proyectos/CrearTarea HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+{
+    "id_etapa":3,
+    "Nombre":"tarea 1",
+    "Descripcion":"Esta es una tarea de prueba",
+    "Plazo":5
+}
+
+###EliminarTarea
+DELETE  {{HOST}}Proyectos/EliminarTarea/2 HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+###ObtenerTarea
+GET {{HOST}}Proyectos/ObtenerTareas HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+###ModificarTarea
+PUT {{HOST}}Proyectos/ModificarTarea HTTP/1.1
+Content-Type: application/json
+Authorization: {{TOKEN}}
+Database: {{DATABASE}}
+
+{
+    "id":1,
+    "id_etapa":3,
+    "nombre":"tarea modificada",
+    "descripcion":"nueva descripcion",
+    "plazo":4
+}
