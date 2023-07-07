@@ -45,11 +45,12 @@ func EliminarEtapa(w http.ResponseWriter, r *http.Request) {
 
 	result := conexion.Delete(&models.Etapa{}, params["id"])
 
-	if result.Error != nil {
-		res.Err("No se pudo eliminar la etapa.")
+	if result.RowsAffected < 1 {
+		res.ErrSend("No se pudo eliminar la etapa.")
 		return
 	}
 
+	res.DatoSend("La etapa se elimino correctamente")
 	defer cancel()
 }
 
@@ -64,7 +65,7 @@ func ObtenerEtapas(w http.ResponseWriter, r *http.Request) {
 	result := conexion.Find(&etapas)
 
 	if result.Error != nil {
-		res.Err("No se puedo obtener las etapas del proyecto")
+		res.ErrSend("No se puedo obtener las etapas del proyecto")
 		return
 	}
 
@@ -74,8 +75,8 @@ func ObtenerEtapas(w http.ResponseWriter, r *http.Request) {
 }
 
 func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
-	defer ep.ErrorControlResponse("Etapas/ObtenerEtapas", w, r)
-	res := ep.NewResponse("Obtener Etapas", w)
+	defer ep.ErrorControlResponse("Etapas/ModificarEtapa", w, r)
+	res := ep.NewResponse("Modificar Etapa", w)
 	var etapa models.Etapa
 
 	err := json.NewDecoder(r.Body).Decode(&etapa)
@@ -90,7 +91,7 @@ func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
 	result := conexion.Updates(&etapa)
 
 	if result.RowsAffected < 1 {
-		res.Err("No se puede actualizar la etapa").DatoSend(etapa)
+		res.ErrSend("No se puede actulizar la etapa")
 		return
 	}
 

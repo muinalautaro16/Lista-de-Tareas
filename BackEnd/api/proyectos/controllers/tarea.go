@@ -44,11 +44,12 @@ func EliminarTarea(w http.ResponseWriter, r *http.Request) {
 	conexion, cancel := db.MysqlORM()
 
 	result := conexion.Delete(&models.Tarea{}, params["id"])
-	if result.Error != nil {
-		res.Err("No se pudo eliminar la tarea")
+	if result.RowsAffected < 1 {
+		res.ErrSend("No se pudo eliminar la tarea")
 		return
 	}
 
+	res.DatoSend("Tarea eliminada")
 	defer cancel()
 }
 
@@ -87,9 +88,10 @@ func ModificarTarea(w http.ResponseWriter, r *http.Request) {
 
 	result := conexion.Updates(&tarea)
 	if result.RowsAffected < 1 {
-		res.Err("No se pudo moficiar la tarea").DatoSend(tarea)
+		res.ErrSend("No se pudo moficiar la tarea")
 		return
 	}
 
+	res.DatoSend("Tarea modificada")
 	defer cancel()
 }

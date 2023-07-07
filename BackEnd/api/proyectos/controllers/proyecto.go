@@ -23,12 +23,6 @@ func CrearProyecto(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// errores, invalido := ep.ValidateStruct(proyecto)
-	// if invalido {
-	// 	res.Err(errores).DatoSend(proyecto)
-	// 	return
-	// }
-
 	conexion, cancel := db.MysqlORM()
 
 	result := conexion.Create(&proyecto)
@@ -52,11 +46,12 @@ func EliminarProyecto(w http.ResponseWriter, r *http.Request) {
 
 	result := conexion.Delete(&models.Proyecto{}, params["id"])
 
-	if result.Error != nil {
-		res.Err("No se puede eliminar el Proyecto")
+	if result.RowsAffected < 1 {
+		res.ErrSend("No se puede eliminar el Proyecto")
 		return
 	}
 
+	res.DatoSend("Proyecto eliminado")
 	defer cancel()
 }
 
@@ -81,8 +76,8 @@ func ObtenerProyectos(w http.ResponseWriter, r *http.Request) {
 }
 
 func ModificarProyecto(w http.ResponseWriter, r *http.Request) {
-	defer ep.ErrorControlResponse("Proyecto/ObtenerProyectos", w, r)
-	res := ep.NewResponse("Obtener Proyectos", w)
+	defer ep.ErrorControlResponse("Proyecto/ModificarProyecto", w, r)
+	res := ep.NewResponse("Modificar Proyecto", w)
 	var proyecto models.Proyecto
 
 	err := json.NewDecoder(r.Body).Decode(&proyecto)

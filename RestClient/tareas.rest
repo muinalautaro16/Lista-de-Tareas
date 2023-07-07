@@ -9,14 +9,14 @@ Authorization: {{TOKEN}}
 Database: {{DATABASE}}
 
 {
-    "id_etapa":3,
-    "Nombre":"tarea 1",
+    "id_etapa":8,
+    "Nombre":"tarea 2",
     "Descripcion":"Esta es una tarea de prueba",
     "Plazo":5
 }
 
 ###EliminarTarea
-DELETE  {{HOST}}Proyectos/EliminarTarea/2 HTTP/1.1
+DELETE  {{HOST}}Proyectos/EliminarTarea/4 HTTP/1.1
 Content-Type: application/json
 Authorization: {{TOKEN}}
 Database: {{DATABASE}}
