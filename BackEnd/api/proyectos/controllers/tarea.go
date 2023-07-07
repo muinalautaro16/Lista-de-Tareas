@@ -27,7 +27,7 @@ func CrearTarea(w http.ResponseWriter, r *http.Request) {
 	result := conexion.Create(&tarea)
 
 	if result.RowsAffected < 1 {
-		res.Err("No se pudo crear el proyecto").DatoSend(tarea)
+		res.Err("No se pudo crear la tarea").DatoSend(tarea)
 		return
 	}
 
