@@ -1,7 +1,11 @@
+@use '@smui/paper/mixins' as paper;
 @use 'sass:color';
 
+
+
 // Svelte Colors!
-@use '@material/theme/index' as theme with ($primary: #1570ac,
+@use '@material/theme/index' as theme with (
+  $primary: #1570ac,
   $secondary: #f39200,
   $surface: #1b1b1b,
   $background: #1b1b1b,
@@ -22,4 +26,12 @@ a {
 
 a:visited {
   color: color.scale(#40b3ff, $lightness: -35%);
+}
+@include paper.paper-color(
+  custom-red,
+  color-palette.$red-100,
+  theme-color.accessible-ink-color(color-palette.$red-100)
+);
+.custom-red {
+  color: color-palette.$red-100;
 }

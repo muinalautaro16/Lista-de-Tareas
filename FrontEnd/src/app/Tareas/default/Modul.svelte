@@ -33,7 +33,7 @@
       <Fab mini color="primary">
           <Icon class="material-icons">add</Icon>
       </Fab>
-  </div>
+    </div>
   </div>
   {#each tareas as item}
     <Tareas tarea={item}>
