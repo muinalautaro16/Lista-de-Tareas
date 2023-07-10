@@ -16,8 +16,7 @@
       fechaInicio: '29/06/23',
       fechaFin: '10/07/23'
     }]
-    
-    
+
     let valueA = '';
     
 </script>
