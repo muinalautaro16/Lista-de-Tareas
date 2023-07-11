@@ -1,4 +1,4 @@
-@use '@smui/paper/mixins' as paper;
+
 @use 'sass:color';
 
 
@@ -27,11 +27,10 @@ a {
 a:visited {
   color: color.scale(#40b3ff, $lightness: -35%);
 }
-@include paper.paper-color(
-  custom-red,
-  color-palette.$red-100,
-  theme-color.accessible-ink-color(color-palette.$red-100)
-);
-.custom-red {
-  color: color-palette.$red-100;
+
+
+.mdc-text-field__input::-webkit-calendar-picker-indicator {
+  display: initial !important;
+  filter: invert(1);
+
 }
