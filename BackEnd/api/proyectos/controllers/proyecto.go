@@ -5,6 +5,7 @@ import (
 	"ASTRIC/BackEnd/shared/db"
 	"ASTRIC/BackEnd/shared/ep"
 	"encoding/json"
+	"strings"
 
 	"net/http"
 
@@ -18,8 +19,14 @@ func CrearProyecto(w http.ResponseWriter, r *http.Request) {
 	var proyecto models.Proyecto
 
 	err := json.NewDecoder(r.Body).Decode(&proyecto)
+
 	if err != nil {
 		res.ErrSend(err.Error())
+		return
+	}
+
+	if strings.TrimSpace(proyecto.Nombre) == "" {
+		res.ErrSend("El nombre se encuentra vacío")
 		return
 	}
 
@@ -86,13 +93,19 @@ func ModificarProyecto(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if strings.TrimSpace(proyecto.Nombre) == "" {
+		res.ErrSend("No se puede actualizar el proyecto.")
+		return
+	}
+
 	conexion, cancel := db.MysqlORM()
 	defer cancel()
 
 	result := conexion.Updates(&proyecto)
 
 	if result.RowsAffected < 1 {
-		res.Err("No se pudo actualizar el proyecto").DatoSend(proyecto)
+		res.ErrSend("No se pudo actualizar el proyecto")
+		return
 	}
 
 	res.DatoSend(proyecto)

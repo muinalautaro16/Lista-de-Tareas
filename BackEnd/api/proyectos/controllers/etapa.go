@@ -6,6 +6,7 @@ import (
 	"ASTRIC/BackEnd/shared/ep"
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -19,6 +20,11 @@ func CrearEtapa(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&etapa)
 	if err != nil {
 		res.ErrSend(err.Error())
+		return
+	}
+
+	if strings.TrimSpace(etapa.Nombre) == "" {
+		res.ErrSend("No se puede actualizar la etapa.")
 		return
 	}
 
@@ -82,6 +88,11 @@ func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&etapa)
 	if err != nil {
 		res.Err(err.Error())
+		return
+	}
+
+	if strings.TrimSpace(etapa.Nombre) == "" {
+		res.ErrSend("No se puede actualizar la etapa.")
 		return
 	}
 

@@ -10,7 +10,7 @@ Database: {{DATABASE}}
 
 {
     "ID_proyecto":12,
-    "Nombre":"Etapa 2",
+    "Nombre":"",
     "Prioridad":"ALTA"
 }
 
@@ -33,8 +33,8 @@ Authorization: {{TOKEN}}
 Database: {{DATABASE}}
 
 {
-    "id":9,
-    "id_proyecto":13,
-    "nombre":"Etapa 3",
+    "id":8,
+    "id_proyecto":12,
+    "nombre":"",
     "prioridad":"MEDIA"
 }

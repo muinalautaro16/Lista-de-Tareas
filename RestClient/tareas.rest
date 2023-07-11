@@ -10,7 +10,7 @@ Database: {{DATABASE}}
 
 {
     "id_etapa":8,
-    "Nombre":"tarea 2",
+    "Nombre":"",
     "Descripcion":"Esta es una tarea de prueba",
     "Plazo":5
 }
@@ -36,7 +36,7 @@ Database: {{DATABASE}}
 {
     "id":1,
     "id_etapa":3,
-    "nombre":"tarea modificada",
+    "nombre":"",
     "descripcion":"nueva descripcion",
     "plazo":4
 }

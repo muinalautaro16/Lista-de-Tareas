@@ -9,14 +9,14 @@ Authorization: {{TOKEN}}
 Database: {{DATABASE}}
 
 {
-    "Nombre":"Proyecto 4",
+    "Nombre":"La ssss",
     "Prioridad":"ALTA",
     "Fecha_Inicio":"2023-06-20",
     "Fecha_Fin":"2023-07-20"
 }
 
 ###EliminarProyecto
-DELETE {{HOST}}Proyectos/EliminarProyecto/13 HTTP/1.1
+DELETE {{HOST}}Proyectos/EliminarProyecto/17 HTTP/1.1
 Content-Type: application/json
 Authorization: {{TOKEN}}
 Database: {{DATABASE}}
@@ -34,8 +34,8 @@ Authorization: {{TOKEN}}
 Database: {{DATABASE}}
 
 {
-    "Id":12,
-    "Nombre":"Proyecto Modificado",
+    "Id":16,
+    "Nombre":"",
     "Prioridad": "MEDIA",
     "Fecha_inicio": "2023-06-22",
     "Fecha_fin": "2023-07-21"

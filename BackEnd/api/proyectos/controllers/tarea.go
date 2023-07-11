@@ -6,6 +6,7 @@ import (
 	"ASTRIC/BackEnd/shared/ep"
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -19,6 +20,11 @@ func CrearTarea(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&tarea)
 	if err != nil {
 		res.ErrSend(err.Error())
+		return
+	}
+
+	if strings.TrimSpace(tarea.Nombre) == "" {
+		res.ErrSend("No se puede actualizar la tarea.")
 		return
 	}
 
@@ -81,6 +87,11 @@ func ModificarTarea(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&tarea)
 	if err != nil {
 		res.Err(err.Error())
+		return
+	}
+
+	if strings.TrimSpace(tarea.Nombre) == "" {
+		res.ErrSend("No se puede actualizar la tarea.")
 		return
 	}
 
