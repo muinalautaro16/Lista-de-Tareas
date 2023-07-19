@@ -1,3 +1,5 @@
-const func = () => { };
+const func = () => {
+
+};
 
 export let helper = func

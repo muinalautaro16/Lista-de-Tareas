@@ -1,45 +1,43 @@
 <script lang="ts">
-	  import Separator from '@smui/list';
+	  
 	  import Prioridad from './prioridad.svelte';
 	  import Fecha from './fecha.svelte';
     import SubTarea from './subTarea.svelte';
     import Basura from './basura.svelte';
-    import Paper from '@smui/paper';
+    import Paper, {Content as ContentPaper}  from '@smui/paper';
     import Textfield from '@smui/paper';
     import Nota from "./nota.svelte";
-    
+
     let value = '';
     export let tarea: any={};
+
 </script>
   
-<div >
-    <Paper color="custom-red">
-      <div class="titulo">
-        <Textfield disabled bind:value={value}>{tarea.nombre}</Textfield>
-        <Separator />
+<div style="display:flex; flex-direction:column">
+    <Paper >
+      <ContentPaper style="display:flex; flex-direction:column">
+        <div class="titulo">
+        <Textfield bind:value={value} >{tarea.nombre}</Textfield>
       </div>
-      
-      
+
       <div class="margins"> 
         <Nota></Nota>
         <SubTarea></SubTarea>
-        <div class="columns margins forma">
-          <Fecha>{tarea.fechaInicio}</Fecha>
-          <Prioridad>{tarea.prioridad}</Prioridad>
-          <Basura></Basura>
+        <div style='display:flex; justify-content:space-between; flex-wrap:wrap'>
+            <div class=" forma">
+              <div><Fecha>{tarea.fechaInicio}</Fecha>
+              <Prioridad>{tarea.prioridad}</Prioridad></div>
+              <div > <Basura></Basura></div>
+            </div>
+          
         </div>   
       </div>
+      </ContentPaper>
+      
     </Paper>
 </div>
 
 <style>
-  :global(.custom-color) {
-    border-color: #7A3E48;
-    color: #5F021F !important;
-    border-radius: 30px;
-    border: 55px;
-    margin: 2rem;
-  }
   * :global(.shaped-outlined),
   * :global(.shaped-outlined .mdc-select__anchor) {
     border-radius: 28px;
@@ -67,8 +65,8 @@
  
   .forma {
     display: flex;
-    align-items: center;
-    width: 14rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin: 15px;
   }
   .titulo {
