@@ -62,7 +62,20 @@ func EliminarProyecto(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 }
 
+// ObtenerProyectos lista los proyectos
 func ObtenerProyectos(w http.ResponseWriter, r *http.Request) {
+	// swagger:operation GET /proyectos/ObtenerPagosHoy Proyectos ObtenerProyectos
+	// ---
+	// summary: lista los proyectos
+	//   in: body
+	//   description: lista los proyectos
+	//   schema:
+	//     "$ref": "#/definitions/Proyecto"
+	// responses:
+	//   default:
+	//     description: Respuesta por defecto
+	//     schema:
+	//       "$ref": "#/definitions/Response"
 	defer ep.ErrorControlResponse("Proyecto/ObtenerProyectos", w, r)
 	res := ep.NewResponse("Obtener Proyectos", w)
 
@@ -79,7 +92,7 @@ func ObtenerProyectos(w http.ResponseWriter, r *http.Request) {
 
 	defer cancel()
 
-	json.NewEncoder(w).Encode(proyectos)
+	res.DatoSend(proyectos)
 }
 
 func ModificarProyecto(w http.ResponseWriter, r *http.Request) {

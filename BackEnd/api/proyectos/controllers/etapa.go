@@ -77,7 +77,7 @@ func ObtenerEtapas(w http.ResponseWriter, r *http.Request) {
 
 	defer cancel()
 
-	json.NewEncoder(w).Encode(etapas)
+	res.DatoSend(etapas)
 }
 
 func ModificarEtapa(w http.ResponseWriter, r *http.Request) {

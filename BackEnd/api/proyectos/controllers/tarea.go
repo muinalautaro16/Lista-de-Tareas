@@ -75,7 +75,7 @@ func ObtenerTareas(w http.ResponseWriter, r *http.Request) {
 	}
 	defer cancel()
 
-	json.NewEncoder(w).Encode(tareas)
+	res.DatoSend(tareas)
 }
 
 func ModificarTarea(w http.ResponseWriter, r *http.Request) {
