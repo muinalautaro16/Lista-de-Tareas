@@ -13,11 +13,6 @@ func rutas(ruta routes.TipoRuta) {
 
 	ruta("/CrearEtapa", controllers.CrearEtapa, "POST", "crear una nueva etapa")
 	ruta("/EliminarEtapa/{id}", controllers.EliminarEtapa, "DELETE", "eliminar una etapa")
-	ruta("/ObtenerEtapas", controllers.ObtenerEtapas, "GET", "obtener etapas")
+	ruta("/ObtenerEtapas/{id}", controllers.ObtenerEtapas, "GET", "obtener etapas")
 	ruta("/ModificarEtapa", controllers.ModificarEtapa, "PUT", "modificar etapa")
-
-	ruta("/CrearTarea", controllers.CrearTarea, "POST", "crear una nueva tarea")
-	ruta("/EliminarTarea/{id}", controllers.EliminarTarea, "DELETE", "eliminar una tarea")
-	ruta("/ObtenerTareas", controllers.ObtenerTareas, "GET", "obtener tareas")
-	ruta("/ModificarTarea", controllers.ModificarTarea, "PUT", "modificar tarea")
 }

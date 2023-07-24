@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Prueba prueba
 func Prueba(w http.ResponseWriter, r *http.Request) {
 
 	ep.ErrorControlResponse("Prueba", w, r)
