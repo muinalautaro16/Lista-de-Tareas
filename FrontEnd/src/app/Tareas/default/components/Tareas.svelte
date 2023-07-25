@@ -1,6 +1,6 @@
 <script lang="ts">
 	  
-	  import Prioridad from './prioridad.svelte';
+	  
 	  import Fecha from './fecha.svelte';
     import SubTarea from './subTarea.svelte';
     import Basura from './basura.svelte';
@@ -10,11 +10,25 @@
 
     let value = '';
     export let tarea: any={};
+    import Select, { Option } from '@smui/select';
+    let valueColor = ''
+    let prioridades =  [
+      {nombre: 'ALTA', color: '#5c2b29'},
+      {nombre: 'MEDIA', color: '#003555'},
+      {nombre: 'BAJA', color: '#00440f'}
+    ];
+
+    let paperColor = "";
+
+    function handleChange(e:any) {
+      const selectedOption = e.target.value;
+      console.log('Opción seleccionada:', selectedOption);
+    } 
 
 </script>
   
 <div style="display:flex; flex-direction:column">
-    <Paper >
+    <Paper style="background-color: {paperColor};">
       <ContentPaper style="display:flex; flex-direction:column">
         <div class="titulo">
         <Textfield bind:value={value} >{tarea.nombre}</Textfield>
@@ -22,14 +36,24 @@
 
       <div class="margins"> 
         <Nota></Nota>
-        <SubTarea></SubTarea>
-        <div style='display:flex; justify-content:space-between; flex-wrap:wrap'>
+        <SubTarea id={tarea.id}></SubTarea>
+        
             <div class=" forma">
-              <div><Fecha>{tarea.fechaInicio}</Fecha>
-              <Prioridad>{tarea.prioridad}</Prioridad></div>
-              <div > <Basura></Basura></div>
-            </div>
-          
+              <div class="forma">
+                <Fecha>{tarea.fechaInicio}</Fecha>
+                <Select on:change={handleChange} class="shaped-outlined" variant="outlined" bind:value={valueColor} label="Prioridad">
+                  <Option Value="" />
+                  {#each prioridades as prioridad}
+                    <Option value={prioridad}>
+                      {prioridad.nombre}
+                      <svg fill={prioridad.color} viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="60" cy="60" r="10"/>
+                      </svg>
+                    </Option>
+                  {/each}
+                </Select>
+              </div>
+            <div style="align-self: center"> <Basura id_proyecto={tarea.id}></Basura></div>
         </div>   
       </div>
       </ContentPaper>
