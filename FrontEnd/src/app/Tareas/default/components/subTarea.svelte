@@ -5,7 +5,7 @@
   
   let contadorTareas = 2;
   let contadorTareasListas= 0;
-
+  export let id_proyecto: any;
   let panel1Open = false;
 </script>
 
@@ -20,7 +20,7 @@
         Etapas - {contadorTareasListas} de {contadorTareas} Terminadas
       </Header>
       <Content>
-        <ListaSubtarea/>
+        <ListaSubtarea id_proyecto={id_proyecto}/>
       </Content>
     </Panel>
   </Accordion>
