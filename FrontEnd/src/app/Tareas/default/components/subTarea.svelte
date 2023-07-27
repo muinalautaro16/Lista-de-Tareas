@@ -20,7 +20,7 @@
         Etapas - {contadorTareasListas} de {contadorTareas} Terminadas
       </Header>
       <Content>
-        <ListaSubtarea/>
+        <ListaSubtarea id_proyecto={id_proyecto}/>
       </Content>
     </Panel>
   </Accordion>
