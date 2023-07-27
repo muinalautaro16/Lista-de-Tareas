@@ -30,7 +30,7 @@
      function obtenerProyectos() {
        http.get(`Proyectos/ObtenerProyectos`)
        .then((data:any) => {
-           console.log('Proyecto obtenido');
+           console.log(`Proyecto obtenido: ${data}`);
            tareas = data.datos;
          })
          .catch(e => {

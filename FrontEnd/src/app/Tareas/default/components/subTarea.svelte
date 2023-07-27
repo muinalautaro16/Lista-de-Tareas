@@ -5,7 +5,7 @@
   
   let contadorTareas = 2;
   let contadorTareasListas= 0;
-
+  export let id_proyecto:any;
   let panel1Open = false;
 </script>
 

@@ -1,6 +1,4 @@
 <script lang="ts">
-	  
-	  
 	  import Fecha from './fecha.svelte';
     import SubTarea from './subTarea.svelte';
     import Basura from './basura.svelte';
@@ -11,7 +9,7 @@
     let value = '';
     export let tarea: any={};
     import Select, { Option } from '@smui/select';
-    let valueColor = ''
+    $: valueColor = tarea.prioridad;
     let prioridades =  [
       {nombre: 'ALTA', color: '#5c2b29'},
       {nombre: 'MEDIA', color: '#003555'},
@@ -36,12 +34,12 @@
 
       <div class="margins"> 
         <Nota></Nota>
-        <SubTarea id={tarea.id}></SubTarea>
+        <SubTarea id_proyecto={tarea.id}></SubTarea>
         
-            <div class=" forma">
+          <div class=" forma">
               <div class="forma">
                 <Fecha>{tarea.fechaInicio}</Fecha>
-                <Select on:change={handleChange} class="shaped-outlined" variant="outlined" bind:value={valueColor} label="Prioridad">
+                <Select on:click={handleChange} class="shaped-outlined" variant="outlined" bind:value={valueColor} label="Prioridad">
                   <Option Value="" />
                   {#each prioridades as prioridad}
                     <Option value={prioridad}>
