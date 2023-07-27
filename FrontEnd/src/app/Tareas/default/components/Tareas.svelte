@@ -1,6 +1,4 @@
 <script lang="ts">
-	  
-	  
 	  import Fecha from './fecha.svelte';
     import SubTarea from './subTarea.svelte';
     import Basura from './basura.svelte';
@@ -9,16 +7,21 @@
     import Nota from "./nota.svelte";
 
     let value = '';
-    export let tarea: any={};
     import Select, { Option } from '@smui/select';
-    let valueColor = ''
+    
+    // * dsd
+    export let tarea: any={};
+
     let prioridades =  [
       {nombre: 'ALTA', color: '#5c2b29'},
       {nombre: 'MEDIA', color: '#003555'},
       {nombre: 'BAJA', color: '#00440f'}
     ];
 
-    let paperColor = "";
+    function colorPrioridad(color: string) {
+        const colorPick:any = prioridades.find(c => c.nombre===color)
+        return colorPick.color
+    }
 
     function handleChange(e:any) {
       const selectedOption = e.target.value;
@@ -28,7 +31,7 @@
 </script>
   
 <div style="display:flex; flex-direction:column">
-    <Paper style="background-color: {paperColor};">
+    <Paper style="background-color: {colorPrioridad(tarea.prioridad)};">
       <ContentPaper style="display:flex; flex-direction:column">
         <div class="titulo">
         <Textfield bind:value={value} >{tarea.nombre}</Textfield>
@@ -36,15 +39,15 @@
 
       <div class="margins"> 
         <Nota></Nota>
-        <SubTarea id={tarea.id}></SubTarea>
+        <SubTarea id_proyecto={tarea.id}></SubTarea>
         
             <div class=" forma">
               <div class="forma">
                 <Fecha>{tarea.fechaInicio}</Fecha>
-                <Select on:change={handleChange} class="shaped-outlined" variant="outlined" bind:value={valueColor} label="Prioridad">
+                <Select class="shaped-outlined" variant="outlined" bind:value={tarea.prioridad} label="Prioridad">
                   <Option Value="" />
                   {#each prioridades as prioridad}
-                    <Option value={prioridad}>
+                    <Option value={prioridad.nombre}>
                       {prioridad.nombre}
                       <svg fill={prioridad.color} viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="60" cy="60" r="10"/>
