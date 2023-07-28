@@ -9,9 +9,9 @@ Authorization: {{TOKEN}}
 Database: {{DATABASE}}
 
 {
-    "nombre":"Proyecto test",
-    "prioridad":"ALTA",
-    "fecha": "2023-11-12"
+    "nombre":"proyecto de prueba",
+    "prioridad":"BAJA",
+    "fecha": "2023-10-12"
 }
 
 @IDPROYECTO = 6
@@ -34,8 +34,8 @@ Authorization: {{TOKEN}}
 Database: {{DATABASE}}
 
 {
-    "id": 2,
-    "nombre": "Pintar habitación",
-    "prioridad": "MEDIA",
+    "id": 7,
+    "nombre": "Arreglar estanteria",
+    "prioridad": "ALTA",
     "fecha": "2023-09-17"
 }

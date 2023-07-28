@@ -6,6 +6,8 @@ import (
 	"ASTRIC/BackEnd/shared/ep"
 	"encoding/json"
 	"net/http"
+	"strings"
+	"unicode/utf8"
 
 	"github.com/gorilla/mux"
 )
@@ -38,6 +40,16 @@ func CrearEtapa(w http.ResponseWriter, r *http.Request) {
 	error, valid := ep.ValidateStruct(etapa)
 	if valid {
 		res.Err(error).DatoSend(etapa)
+		return
+	}
+
+	if strings.TrimSpace(etapa.Nombre) == "" {
+		res.ErrSend("No se pudo crear la etapa.")
+		return
+	}
+
+	if utf8.RuneCountInString(etapa.Nombre) > 150 {
+		res.ErrSend("No se pudo crear la etapa.")
 		return
 	}
 
@@ -146,6 +158,16 @@ func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
 	error, valid := ep.ValidateStruct(etapa)
 	if valid {
 		res.Err(error).DatoSend(etapa)
+		return
+	}
+
+	if strings.TrimSpace(etapa.Nombre) == "" {
+		res.ErrSend("No se pudo modificar la etapa.")
+		return
+	}
+
+	if utf8.RuneCountInString(etapa.Nombre) > 150 {
+		res.ErrSend("No se pudo modificar la etapa.")
 		return
 	}
 

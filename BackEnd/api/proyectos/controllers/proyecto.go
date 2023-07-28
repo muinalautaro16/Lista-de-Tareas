@@ -6,6 +6,8 @@ import (
 	"ASTRIC/BackEnd/shared/ep"
 	"encoding/json"
 	"net/http"
+	"strings"
+	"unicode/utf8"
 
 	"github.com/gorilla/mux"
 )
@@ -38,6 +40,16 @@ func CrearProyecto(w http.ResponseWriter, r *http.Request) {
 	error, valid := ep.ValidateStruct(proyecto)
 	if valid {
 		res.Err(error).DatoSend(proyecto)
+		return
+	}
+
+	if strings.TrimSpace(proyecto.Nombre) == "" {
+		res.ErrSend("No se pudo crear el proyecto.")
+		return
+	}
+
+	if utf8.RuneCountInString(proyecto.Nombre) > 150 {
+		res.ErrSend("No se pudo crear el proyecto.")
 		return
 	}
 
@@ -150,6 +162,16 @@ func ModificarProyecto(w http.ResponseWriter, r *http.Request) {
 	error, valid := ep.ValidateStruct(proyecto)
 	if valid {
 		res.Err(error).DatoSend(proyecto)
+		return
+	}
+
+	if strings.TrimSpace(proyecto.Nombre) == "" {
+		res.ErrSend("No se pudo modificar el proyecto.")
+		return
+	}
+
+	if utf8.RuneCountInString(proyecto.Nombre) > 150 {
+		res.ErrSend("No se pudo modificar el proyecto.")
 		return
 	}
 
