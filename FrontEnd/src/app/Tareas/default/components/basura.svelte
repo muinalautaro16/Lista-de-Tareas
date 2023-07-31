@@ -1,13 +1,18 @@
 <script lang='ts'>
-	
+	import { createEventDispatcher } from "svelte";
     import IconButton from '@smui/icon-button';
     import { http } from "@astric";
     export let id_proyecto: any;
+
+    let dispatch = createEventDispatcher();
 
     function btnEliminar() {
         http.delete(`Proyectos/EliminarProyecto/${id_proyecto}`)
         .then( () => {
             console.log('Proyecto elimando')
+            dispatch("eliminado", {
+                delete:id_proyecto,
+            })
         })
         .catch( () => {
             console.log('No hemos podido eliminar el proyecto')

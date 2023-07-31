@@ -9,7 +9,8 @@
      let tareas:any[] = [];
 
     let valueA = '';
-    
+    let showTareas = true;
+
     function crearProyecto(nombre:string) {
       let proyectos = {
         nombre: nombre,
@@ -20,11 +21,13 @@
       http.post(`Proyectos/CrearProyecto`, proyectos)
         .then((data:any) => {
           console.log('Proyecto agregado');
+          obtenerProyectos();
         })
         .catch(e => {
           console.log((e));
         
         }) 
+        
     }
 
      function obtenerProyectos() {
@@ -35,7 +38,6 @@
          })
          .catch(e => {
           console.log((e));
-        
          }) 
    }
 
@@ -43,6 +45,12 @@
     obtenerProyectos()
   });
 
+  function refreshTareas() {
+    obtenerProyectos()
+    tareas = tareas;
+    showTareas = false;
+    showTareas = !showTareas;
+  }
 </script>
 
 <div class="contenedor1">
@@ -51,20 +59,34 @@
 
 <div class="flexy">
   <div class="margins">
-    <div>
-      <Textfield bind:value={valueA} label="Crear Proyecto" input$maxlength={150} />
+    <div class="textfield">
+      <div>
+        <Textfield bind:value={valueA} label="Crear Proyecto" input$maxlength={150} > 
+          <CharacterCounter class="izq" slot="helper">0 / 150</CharacterCounter>
+        </Textfield>
+      </div>
+      
+      <div>
         <Fab mini color="primary">
           <Icon on:click={() => crearProyecto(valueA)} class="material-icons">add</Icon>
         </Fab>
-      <CharacterCounter class="izq" slot="helper">0 / 150</CharacterCounter>
+      </div>
       
     </div>
   </div>
   
   {#each tareas as item}
-    <Tareas tarea={item} />    
-  {/each}
-  
+    {#if showTareas}
+       <Tareas on:eliminado={ (proyEl) => {
+         tareas = tareas.filter(proyArray  => {
+           proyArray.id !== proyEl.detail.delete
+         })
+        console.log(proyEl)
+      }} tarea={item} /> 
+    {/if}
+    
+    {/each}
+    
   
 </div>
 
@@ -83,5 +105,11 @@
     background-color: #3c3c3c;
     margin: 10px;
     height: auto;
+  }
+
+  .textfield {
+    display: flex;
+    justify-items: center;
+    
   }
 </style>
