@@ -175,13 +175,13 @@ func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
 
 	conexion, cancel := db.MysqlORM()
 
-	conexion.Updates(&etapa)
-	/*
-		if result.RowsAffected < 1 {
-			res.ErrSend("No se pudo actulizar la etapa")
-			return
-		}
-	*/
+	result := conexion.Updates(&etapa)
+
+	if result.RowsAffected < 1 {
+		res.ErrSend("No se pudo actulizar la etapa")
+		return
+	}
+
 	defer cancel()
 	res.DatoSend(etapa)
 }

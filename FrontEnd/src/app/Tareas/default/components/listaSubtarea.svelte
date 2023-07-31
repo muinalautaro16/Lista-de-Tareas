@@ -1,5 +1,4 @@
 <script lang="ts">
-	
 	import { onMount } from 'svelte';
   import Textfield from '@smui/textfield';
   import Button, { Label } from '@smui/button';  
@@ -9,7 +8,6 @@
   import { http } from "@astric";
   let changeEvent: CustomEvent<{ changedIndices: number[] }> | null;
  
-
   export let id_proyecto: any;
   let valueA = '';
   let etapas: any[] = [];
@@ -18,8 +16,6 @@
   $: {
     selected = etapas.filter((etapa) => etapa.estado).map((etapa) => etapa.nombre);
   }
-
-
 
   function obtenerEtapas(){
     http.get(`Proyectos/ObtenerEtapas/${id_proyecto}`)
@@ -35,37 +31,18 @@
     obtenerEtapas();
   })
 
-  function finalizada(id: number) {
-  for (let i = 0; i < etapas.length; i++) {
-    if (etapas[i]?.id === id) {
-      etapas[i].estado = etapas[i].estado; // Cambiar entre true y false
-        console.log(etapas[i].estado)
-        console.log(typeof(etapas[i].estado))
-        setTimeout(() => {
-          modificarEtapa(id, etapas[i].nombre, etapas[i].estado);
-        }, 1000);
-        
-    }
-  }
-}
-
-/*function timerModificacion(id: any, nombre: any, estado: boolean){
-  modificarEtapa(id, nombre, estado);
-}*/
-
-function modificarEtapa(id: any, nombre: any, estado: any){
+function modificarEtapa(id: any, nombre: any, estado: boolean){
   let etapa={
     id: id,
     id_proyecto: id_proyecto,
     nombre: nombre,
-    estado: !estado
+    estado: estado === true ? true : false
   }
   http.put(`Proyectos/ModificarEtapa`, etapa)
   .then((data: any)=>{
     console.log("Etapa modificada")
     console.log(data)
   }).catch(e => {
-    console.log(etapa)
     console.log(e)
   })
 }
@@ -97,7 +74,6 @@ function eliminarEtapa(id: any){
 }
 </script>
 
-
 <class class="columns margins">
   <List
   class="demo-list"
@@ -109,7 +85,7 @@ function eliminarEtapa(id: any){
   <div style="display:flex">
     <Item>
       <Meta>
-        <Checkbox on:change={()=>modificarEtapa(etapa.id, etapa.nombre, etapa.estado)} bind:checked={etapa.estado} /> 
+        <Checkbox on:change={() => modificarEtapa(etapa.id, etapa.nombre, etapa.estado)} bind:checked={etapa.estado} /> 
       </Meta>
       {#if etapa.estado}
         <Textfield  bind:value={etapa.nombre} style="text-decoration: line-through" on:change={()=>modificarEtapa(etapa.id, etapa.nombre, etapa.estado)}/>
@@ -128,6 +104,5 @@ function eliminarEtapa(id: any){
   </Button>
   
   <Textfield bind:value={valueA} label="Crear Etapa"/>
-
 </div>
 </class>
