@@ -1,4 +1,5 @@
 <script lang="ts">
+	
 	import { onMount } from 'svelte';
   import Textfield from '@smui/textfield';
   import Button, { Label } from '@smui/button';  
@@ -37,14 +38,37 @@
   function finalizada(id: number) {
   for (let i = 0; i < etapas.length; i++) {
     if (etapas[i]?.id === id) {
-      etapas[i]!.estado = !etapas[i]!.estado; // Cambiar entre true y false
+      etapas[i].estado = etapas[i].estado; // Cambiar entre true y false
+        console.log(etapas[i].estado)
+        console.log(typeof(etapas[i].estado))
+        setTimeout(() => {
+          modificarEtapa(id, etapas[i].nombre, etapas[i].estado);
+        }, 1000);
+        
     }
   }
 }
 
-//function modificarEtapa(etapa:any){
+/*function timerModificacion(id: any, nombre: any, estado: boolean){
+  modificarEtapa(id, nombre, estado);
+}*/
 
-//}
+function modificarEtapa(id: any, nombre: any, estado: any){
+  let etapa={
+    id: id,
+    id_proyecto: id_proyecto,
+    nombre: nombre,
+    estado: !estado
+  }
+  http.put(`Proyectos/ModificarEtapa`, etapa)
+  .then((data: any)=>{
+    console.log("Etapa modificada")
+    console.log(data)
+  }).catch(e => {
+    console.log(etapa)
+    console.log(e)
+  })
+}
 
 function crearEtapa(nombre: string){
   let etapa={
@@ -85,12 +109,12 @@ function eliminarEtapa(id: any){
   <div style="display:flex">
     <Item>
       <Meta>
-        <Checkbox bind:group={selected} value={etapa.nombre} on:change={()=> finalizada(etapa.id)} />
+        <Checkbox on:change={()=>modificarEtapa(etapa.id, etapa.nombre, etapa.estado)} bind:checked={etapa.estado} /> 
       </Meta>
       {#if etapa.estado}
-        <Label style="text-decoration: line-through">{etapa.nombre}</Label>
+        <Textfield  bind:value={etapa.nombre} style="text-decoration: line-through" on:change={()=>modificarEtapa(etapa.id, etapa.nombre, etapa.estado)}/>
       {:else}
-        <Label>{etapa.nombre}</Label>
+        <Textfield  bind:value={etapa.nombre} on:change={()=>modificarEtapa(etapa.id, etapa.nombre, etapa.estado)}/>
       {/if}
     </Item>
     <IconButton class="material-icons" aria-label="Trash" on:click={() => eliminarEtapa(etapa.id)}>delete</IconButton>

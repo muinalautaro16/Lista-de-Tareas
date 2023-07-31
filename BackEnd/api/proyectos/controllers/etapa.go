@@ -5,6 +5,7 @@ import (
 	"ASTRIC/BackEnd/shared/db"
 	"ASTRIC/BackEnd/shared/ep"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
 	"unicode/utf8"
@@ -145,8 +146,9 @@ func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
 	//     description: Respuesta por defecto
 	//     schema:
 	//       "$ref": "#/definitions/Response"
-	defer ep.ErrorControlResponse("etapas/ModificarEtapa", w, r)
+	defer ep.ErrorControlResponse("Etapas/ModificarEtapa", w, r)
 	res := ep.NewResponse("Modificar Etapa", w)
+
 	var etapa models.Etapa
 
 	err := json.NewDecoder(r.Body).Decode(&etapa)
@@ -154,7 +156,7 @@ func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
 		res.Err(err.Error())
 		return
 	}
-
+	fmt.Println(etapa)
 	error, valid := ep.ValidateStruct(etapa)
 	if valid {
 		res.Err(error).DatoSend(etapa)
@@ -172,14 +174,14 @@ func ModificarEtapa(w http.ResponseWriter, r *http.Request) {
 	}
 
 	conexion, cancel := db.MysqlORM()
+
+	conexion.Updates(&etapa)
+	/*
+		if result.RowsAffected < 1 {
+			res.ErrSend("No se pudo actulizar la etapa")
+			return
+		}
+	*/
 	defer cancel()
-
-	result := conexion.Updates(&etapa)
-
-	if result.RowsAffected < 1 {
-		res.ErrSend("No se pudo actulizar la etapa")
-		return
-	}
-
 	res.DatoSend(etapa)
 }
