@@ -6,9 +6,11 @@
     import Textfield from '@smui/textfield';
     import Nota from './nota.svelte';
     import Select, { Option } from '@smui/select';
-
+    import { createEventDispatcher } from 'svelte';
     // * dsd
     export let tarea: any = {};
+
+    const dispatch = createEventDispatcher();
 
     let prioridades = [
         { nombre: 'ALTA', color: '#5c2b29', borde: '#281312' },
@@ -21,15 +23,22 @@
         return colorPick;
     }
 
-    function handleChange(e: any) {
-        const selectedOption = e.target.value;
-        console.log('Opción seleccionada:', selectedOption);
-    }
-
-    function modificarProyecto(data: any) {
-        http.put('Proyectos/ModificarProyecto').then((data: any) => {
-            console.log('Proyecto modificado');
-        });
+    function enviarDatos(
+        id: any,
+        nombre: any,
+        nota: string,
+        fecha: string,
+        prioridad: string,
+    ) {
+        let proyecto = {
+            id: id,
+            nombre: nombre,
+            nota: nota,
+            prioridad: prioridad,
+            fecha: fecha,
+        };
+        console.log(nota);
+        dispatch('proyectoEnviado', { datos: proyecto });
     }
 </script>
 
@@ -40,22 +49,60 @@
             .color}; border-radius: 5px 45px; border:10px solid var(--borde)"
     >
         <Title style="padding-bottom: 10px">
-            <Textfield bind:value={tarea.nombre} />
+            <Textfield
+                bind:value={tarea.nombre}
+                on:change={() =>
+                    enviarDatos(
+                        tarea.id,
+                        tarea.nombre,
+                        tarea.nota,
+                        tarea.fecha,
+                        tarea.prioridad,
+                    )}
+            />
         </Title>
 
         <ContentPaper style="display:flex; flex-direction:column">
             <div class="margins">
-                <Nota />
+                <Nota
+                    bind:valueNota={tarea.nota}
+                    on:enviarNota={n =>
+                        enviarDatos(
+                            tarea.id,
+                            tarea.nombre,
+                            n.detail.nota,
+                            tarea.fecha,
+                            tarea.prioridad,
+                        )}
+                />
                 <SubTarea id_proyecto={tarea.id} />
 
                 <div class=" forma">
                     <div class="forma">
-                        <Fecha>{tarea.fechaInicio}</Fecha>
+                        <Fecha
+                            bind:valueFecha={tarea.fecha}
+                            on:fechaEnviada={f =>
+                                enviarDatos(
+                                    tarea.id,
+                                    tarea.nombre,
+                                    tarea.nota,
+                                    f.detail.fecha,
+                                    tarea.prioridad,
+                                )}
+                        />
                         <Select
                             class="shaped-outlined"
                             variant="outlined"
                             bind:value={tarea.prioridad}
                             label="Prioridad"
+                            on:click={() =>
+                                enviarDatos(
+                                    tarea.id,
+                                    tarea.nombre,
+                                    tarea.nota,
+                                    tarea.fecha,
+                                    tarea.prioridad,
+                                )}
                         >
                             <Option Value="" />
                             {#each prioridades as prioridad}

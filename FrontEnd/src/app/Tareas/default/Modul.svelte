@@ -7,21 +7,49 @@
     import Fab, { Icon } from '@smui/fab';
 
     let tareas: any[] = [];
+    let proyecto: any;
+    let today = new Date();
+    let todayString =
+        today.getFullYear() +
+        '-' +
+        ('0' + (today.getMonth() + 1)).slice(-2) +
+        '-' +
+        ('0' + today.getDate()).slice(-2) +
+        'T' +
+        +('0' + today.getHours()).slice(-2) +
+        ':' +
+        ('0' + today.getMinutes()).slice(-2);
 
     let valueA = '';
-    let showTareas = true;
+
+    function proyectoRecibido(event: any) {
+        proyecto = event.detail.datos;
+        modificarProyecto();
+    }
+
+    function modificarProyecto() {
+        http.put('Proyectos/ModificarProyecto', proyecto)
+            .then((data: any) => {
+                console.log('proyecto modificado');
+                console.log(data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
 
     function crearProyecto(nombre: string) {
         let proyectos = {
             nombre: nombre,
+            nota: '',
             prioridad: 'MEDIA',
-            fechaInicio: '29/06/23',
-            fechaFin: '10/07/23',
+            fecha: todayString,
         };
         http.post(`Proyectos/CrearProyecto`, proyectos)
             .then((data: any) => {
                 console.log('Proyecto agregado');
                 obtenerProyectos();
+                console.log(data);
             })
             .catch(e => {
                 console.log(e);
@@ -57,13 +85,11 @@
                     label="Crear Proyecto"
                     input$maxlength={150}
                 >
-                    <CharacterCounter class="izq" slot="helper"
-                        >0 / 150</CharacterCounter
-                    >
+                    <CharacterCounter slot="helper">0 / 150</CharacterCounter>
                 </Textfield>
             </div>
 
-            <div>
+            <div class="boton">
                 <Fab mini color="primary">
                     <Icon
                         on:click={() => crearProyecto(valueA)}
@@ -76,6 +102,7 @@
 
     {#each tareas as item}
         <Tareas
+            on:proyectoEnviado={proyectoRecibido}
             on:eliminado={proyEl => {
                 tareas = tareas.filter(proyArray => {
                     proyArray.id !== proyEl.detail.delete;
@@ -105,5 +132,12 @@
     .textfield {
         display: flex;
         justify-items: center;
+    }
+
+    .boton {
+        display: grid;
+        align-items: center;
+        padding-left: 8px;
+        padding-bottom: 5px;
     }
 </style>
